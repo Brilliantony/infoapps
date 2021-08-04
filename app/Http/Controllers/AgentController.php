@@ -7,7 +7,7 @@ use App\Models\SiteAwal;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-
+use App\Http\Resources\AgentResource;
 class AgentController extends Controller
 {
     public function index()
@@ -17,7 +17,8 @@ class AgentController extends Controller
         $params = [
             'data' => $data,
         ];
-        return view('agent.table', $params)->with('data',$data);
+        return view('agent.table', $params)->with('agent',AgentResource::collection($data));
+        //return response([ 'agent' => AgentResource::collection($data), 'message' => 'Retrieved successfully'], 200);
     }
     public function getAll(){
         $data = Agent::all();

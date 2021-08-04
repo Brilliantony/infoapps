@@ -37,7 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('awfe', AwfeController::class);
     Route::resource('agent', AgentController::class);
     Route::resource('tl', TLController::class);
-    Route::resource('site_awal', SiteAwalController::class);
+    Route::resource('site_awal', SiteAwalController::class); 
     
     Route::group(['prefix'=>'awfe'], function(){
         Route::get('/show',[AwfeController::class,'index']);
